@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hayl Al-Salehi</title>
+  <style>
+    :root {
+      --navy: #00305a;
+      --navy-light: #004f8c;
+      --accent: #c8954a;
+      --text: #1a1a1a;
+      --muted: #555;
+      --bg: #fafafa;
+      --white: #ffffff;
+      --border: #dde3ea;
+      --section-bg: #f4f6f9;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    nav .brand {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.6rem;
+    }
+
+    nav ul a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+
+    #hero .photo {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+      margin-bottom: 1.4rem;
+    }
+
+    #hero h1 {
+      font-size: 2.8rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    #hero .subtitle {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0.2rem;
+    }
+
+    #hero .institution {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.6rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 0.3rem 0.9rem;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-links a:hover {
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--section-bg);
+      max-width: 100%;
+    }
+
+    section:nth-of-type(even) > .inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .year-label {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── ABOUT ── */
+    #about p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      margin-bottom: 1.6rem;
+    }
+
+    .edu-item .degree {
+      font-weight: bold;
+    }
+
+    .edu-item .diss {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .edu-item .committee {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item {
+      margin-bottom: 1.4rem;
+      padding-left: 1.2rem;
+      border-left: 3px solid var(--border);
+    }
+
+    .pub-item p {
+      font-size: 0.97rem;
+      line-height: 1.65;
+    }
+
+    .pub-item a {
+      color: var(--navy-light);
+      text-decoration: none;
+    }
+
+    .pub-item a:hover { text-decoration: underline; }
+
+    .wip-label {
+      display: inline-block;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.1rem 0.5rem;
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── TEACHING ── */
+    .teaching-item {
+      margin-bottom: 0.9rem;
+      padding-left: 1.2rem;
+      border-left: 3px solid var(--border);
+    }
+
+    .teaching-item .course {
+      font-weight: bold;
+      font-size: 0.97rem;
+    }
+
+    .teaching-item .meta {
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ── RESEARCH APPOINTMENTS ── */
+    .appt-block {
+      display: flex;
+      gap: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .appt-block .yr {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.95rem;
+      min-width: 60px;
+      padding-top: 0.05rem;
+    }
+
+    .appt-block .roles { flex: 1; }
+
+    .appt-block .roles p {
+      font-size: 0.97rem;
+      line-height: 1.5;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ── FUNDING ── */
+    .funding-group { margin-bottom: 1.6rem; }
+
+    .funding-group h3 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+
+    .funding-item {
+      margin-bottom: 0.55rem;
+      font-size: 0.97rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .funding-item::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .funding-amount {
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 0.8rem; }
+      #hero h1 { font-size: 2rem; }
+      .appt-block { flex-direction: column; gap: 0.3rem; }
+    }
+
+    .skill-box h3 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-box p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ── CONFERENCES ── */
+    .conf-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .conf-list { grid-template-columns: 1fr; }
+    }
+
+    .conf-list li {
+      font-size: 0.93rem;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.45;
+    }
+
+    .conf-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 1.4rem 1rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="brand" href="#hero">Hayl Al-Salehi</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#funding">Funding</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <img class="photo" src="photo.png" alt="Hayl Al-Salehi" />
+    <h1>Hayl Al-Salehi</h1>
+    <p class="subtitle">Ph.D. Candidate, Political Science</p>
+    <p class="institution">University of Western Ontario &nbsp;·&nbsp; London, Ontario, Canada</p>
+    <div class="contact-links">
+      <a href="mailto:halsale3@uwo.ca">&#9993; halsale3@uwo.ca</a>
+      <a href="https://www.linkedin.com/in/haylalsalehi/" target="_blank">LinkedIn</a>
+      <a href="CV_Al-SalehiH.pdf" target="_blank">&#8595; Download CV</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      I am a Ph.D. candidate in Political Science at the University of Western Ontario, where I study rebel diplomacy, civil conflict, and state–non-state actor relations. My dissertation, <em>Rebel Diplomacy: Determinants, Consequences, and Public Attitudes</em>, examines when and why armed non-state actors pursue diplomatic recognition, the consequences of those choices for conflict outcomes, and how the public in different countries perceives negotiations with rebel groups.
+    </p>
+    <p>
+      My broader research spans political violence, authoritarian resilience in the Middle East and North Africa, and the reintegration of former combatants. I have conducted fieldwork in Yemen and Lebanon, and have worked as a crisis analyst and policy researcher with organizations including Mercy Corps, the Yemen Policy Center, and the Center for Information Resilience.
+    </p>
+    <p>
+      Before coming to Western, I completed an M.A. in International Affairs <em>with Distinction</em> at the Lebanese American University (2021) and a B.A. in Psychology at the American University of Beirut (2019).
+    </p>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="inner">
+      <h2>Research</h2>
+
+      <!-- Published -->
+      <div style="margin-bottom:2rem">
+        <p class="year-label">Peer-Reviewed Publications</p>
+
+        <div class="pub-item">
+          <p>
+            Roskoschinski, A., Liang, W., Duan, Y., <strong>Al-Salehi, H.</strong>, Lippke, S., &amp; Welsh, B. (2023).
+            <a href="https://pubmed.ncbi.nlm.nih.gov/37965359/" target="_blank">
+              Loneliness and depression in older adults with multimorbidity: the role of self-efficacy and social support.
+            </a>
+            <em>Frontiers in Psychiatry</em>. doi: 10.3389/fpsyt.2023.1232067.
+            <span style="font-size:0.85rem;color:var(--muted);">[equal authorship]</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- WIP -->
+      <div>
+        <p class="year-label">Working Papers</p>
+
+        <div class="pub-item">
+          <span class="wip-label">Under Review</span>
+          <p>
+            "Diplomats or Dead Ends? Rebel Diplomacy, Survival, and Success in Civil Wars."
+          </p>
+        </div>
+
+        <div class="pub-item">
+          <span class="wip-label">In Progress</span>
+          <p>
+            "When Do Rebels Build Embassies? Organizational Capacity, External Support, and the Choice Between Diplomacy and Military Escalation" (with Blair Welsh).
+          </p>
+        </div>
+
+        <div class="pub-item">
+          <span class="wip-label">In Progress</span>
+          <p>
+            "Talking to Rebels? Public Attitudes Toward Rebel Diplomacy in the United States and Nigeria."
+          </p>
+        </div>
+
+        <div class="pub-item">
+          <span class="wip-label">In Progress</span>
+          <p>
+            "Thresholds of Resistance: Repression and the Moral Economy of Violence in Tunisia and Morocco" (with Blair Welsh).
+          </p>
+        </div>
+
+        <div class="pub-item">
+          <span class="wip-label">In Progress</span>
+          <p>
+            "Repatriation and Reconciliation in Comparison: Former ISIS Collaborators in the Middle East and North Africa" (with Mirna El Masri and others).
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p style="margin-bottom:1.2rem;font-size:0.95rem;color:var(--muted);">Teaching Assistant, University of Western Ontario</p>
+
+    <div class="teaching-item">
+      <div class="course">Foundations of International Relations</div>
+      <div class="meta">Dr. Adam Harmes &nbsp;·&nbsp; Undergraduate &nbsp;·&nbsp; Winter 2026</div>
+    </div>
+
+    <div class="teaching-item">
+      <div class="course">International Law and Order</div>
+      <div class="meta">Dr. Blair Welsh &nbsp;·&nbsp; Undergraduate &nbsp;·&nbsp; Fall 2025</div>
+    </div>
+
+    <div class="teaching-item">
+      <div class="course">Foundations of International Relations</div>
+      <div class="meta">Dr. Adam Harmes &nbsp;·&nbsp; Undergraduate &nbsp;·&nbsp; Winter 2025</div>
+    </div>
+
+    <div class="teaching-item">
+      <div class="course">Research Design in Political Science</div>
+      <div class="meta">Alvaro J. Pereira Filho &nbsp;·&nbsp; Undergraduate &nbsp;·&nbsp; Fall 2024</div>
+    </div>
+  </section>
+
+  <!-- FUNDING -->
+  <section id="funding">
+    <div class="inner">
+      <h2>Funding &amp; Awards</h2>
+
+      <div class="funding-group">
+        <h3>Grants</h3>
+        <div class="funding-item">Faculty Research Development Grant, University of Western Ontario, 2024–2027 &nbsp;<span class="funding-amount">$8,000</span></div>
+        <div class="funding-item">Equity and Diversity Social Science Doctoral Fellowship (EDSSDF), University of Western Ontario, 2023–2027 &nbsp;<span class="funding-amount">$20,000</span></div>
+        <div class="funding-item">Western University Doctoral Funding Package, 2023–2027 &nbsp;<span class="funding-amount">$80,000</span></div>
+        <div class="funding-item">MEPI Grant for Professional Development and Career Enhancement, US Department of State, 2022 &nbsp;<span class="funding-amount">$5,000</span></div>
+      </div>
+
+      <div class="funding-group">
+        <h3>Scholarships</h3>
+        <div class="funding-item">Tomorrow Leaders Graduate Scholarship, Middle East Partnership Initiative, 2019–2021 &nbsp;<span class="funding-amount">$100,000</span></div>
+        <div class="funding-item">Tomorrow Leaders Undergraduate Scholarship, Middle East Partnership Initiative, 2015–2019 &nbsp;<span class="funding-amount">$200,000</span></div>
+        <div class="funding-item">Youth Exchange and Study Scholarship, US Department of State, 2012–2014 &nbsp;<span class="funding-amount">$30,000</span></div>
+      </div>
+
+      <div class="funding-group">
+        <h3>Awards &amp; Honours</h3>
+        <div class="funding-item">Travel Grant, Western University, 2026 &nbsp;<span class="funding-amount">$1,000</span></div>
+        <div class="funding-item">Travel Grant, American Political Science Association, 2025 &nbsp;<span class="funding-amount">$800</span></div>
+        <div class="funding-item">Certificate of Excellence in Volunteerism and Community Service, Middle East Partnership Initiative, 2019–2021</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2>Research Experience</h2>
+
+    <div class="appt-block">
+      <div class="yr">2023–2025</div>
+      <div class="roles">
+        <p><strong>Crisis Analyst</strong>, Mercy Corps (part-time)</p>
+      </div>
+    </div>
+
+    <div class="appt-block">
+      <div class="yr">2024</div>
+      <div class="roles">
+        <p><strong>Development Analyst</strong>, Yemen Policy Center</p>
+        <p><strong>Research Assistant</strong>, Dr. Sebastian Vallejo Vera, University of Western Ontario</p>
+      </div>
+    </div>
+
+    <div class="appt-block">
+      <div class="yr">2023</div>
+      <div class="roles">
+        <p><strong>Yemen Researcher</strong>, Center for Information Resilience</p>
+        <p><strong>Research Assistant</strong>, Dr. Sebastian Vallejo Vera, University of Western Ontario</p>
+      </div>
+    </div>
+
+    <div class="appt-block">
+      <div class="yr">2023–2024</div>
+      <div class="roles">
+        <p><strong>Research Assistant</strong>, University of Western Ontario</p>
+      </div>
+    </div>
+
+    <div class="appt-block">
+      <div class="yr">2020–2022</div>
+      <div class="roles">
+        <p><strong>Crisis Analyst</strong>, Mercy Corps</p>
+      </div>
+    </div>
+
+    <div style="margin-top:1.6rem">
+      <p style="font-size:0.92rem;color:var(--muted);">
+        <strong style="color:var(--text);">Fieldwork:</strong> Yemen; Lebanon
+      </p>
+      <p style="font-size:0.92rem;color:var(--muted);margin-top:0.4rem;">
+        <strong style="color:var(--text);">Affiliations:</strong> American Political Science Association; Political Science Graduate Student Association; Orientation and Social Committee; Society of Graduate Students, Western University
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="inner">
+      <h2>Skills &amp; Training</h2>
+
+      <div class="skills-grid" style="margin-bottom:2rem;">
+        <div class="skill-box">
+          <h3>Languages</h3>
+          <p>Arabic (native) · English (advanced) · French (beginner) · Spanish (beginner)</p>
+        </div>
+        <div class="skill-box">
+          <h3>Statistical &amp; GIS</h3>
+          <p>R · Python · Stata · QGIS · ArcMap</p>
+        </div>
+        <div class="skill-box">
+          <h3>Software</h3>
+          <p>NVivo · Power BI · Adobe Illustrator · LaTeX · WordPress · MS Office · Google Suite</p>
+        </div>
+        <div class="skill-box">
+          <h3>Selected Training</h3>
+          <p>Public Policy Analysis Certificate, LSE · Google Project Management Certificate · New Generation of Social Scientists Fellowship, Arab Council for Social Science</p>
+        </div>
+      </div>
+
+      <p class="year-label" style="margin-bottom:0.8rem;">Selected Conferences &amp; Workshops</p>
+      <ul class="conf-list">
+        <li>American Political Science Association Annual Meeting, 2025</li>
+        <li>MENA Research Group Workshop Series (APSA), 2025</li>
+        <li>Political Science Graduate Student Association Conference, 2026</li>
+        <li>Research on Teaching and Learning Symposium, 2025</li>
+        <li>Time Series Theories and Applications Workshop, 2025</li>
+        <li>Geospatial Analysis in Social Sciences, 2024</li>
+        <li>Measurement of Dynamic Latent Concepts, 2024</li>
+        <li>Fall Perspectives on Teaching Conference, 2023–2025</li>
+        <li>Teaching in the Canadian Classroom Program, 2025</li>
+        <li>TA Day: Graduate Student Conference on Teaching, 2024</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Hayl Al-Salehi &nbsp;·&nbsp; Department of Political Science, University of Western Ontario &nbsp;·&nbsp; <a href="mailto:halsale3@uwo.ca">halsale3@uwo.ca</a></p>
+    <p style="margin-top:0.3rem;">Last updated: March 2026</p>
+  </footer>
+
+</body>
+</html>
