@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://haylalsalehi-ctrl.github.io/sitemap.xml
+Sitemap: https://haylalsalehi.com/sitemap.xml
