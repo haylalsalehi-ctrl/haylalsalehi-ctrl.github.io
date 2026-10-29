@@ -67,6 +67,11 @@
         { "@type": "CollegeOrUniversity", "name": "Lebanese American University" },
         { "@type": "CollegeOrUniversity", "name": "American University of Beirut" }
       ],
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Yemen and MENA consultation", "description": "One-on-one consultations on Yemen and the wider Middle East and North Africa." },
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": 100, "priceCurrency": "USD", "unitCode": "HUR" }
+      },
       "sameAs": [
         "https://www.linkedin.com/in/haylalsalehi/"
       ]
@@ -790,6 +795,70 @@
       linear-gradient(var(--rule), var(--rule)) center / 100% 1px no-repeat;
   }
   .hero { border-bottom: none; }
+
+  /* ── Ask me about Yemen ── */
+  .ask-fab {
+    position: fixed; right: 24px; bottom: 24px; z-index: 60;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 100px; border: 1px solid var(--accent);
+    background: var(--accent); color: var(--paper);
+    font: 500 14px/1 'IBM Plex Sans Arabic', -apple-system, sans-serif;
+    cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .ask-fab:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
+  .ask-fab svg { width: 16px; height: 16px; }
+  .ask-panel {
+    position: fixed; right: 24px; bottom: 84px; z-index: 61;
+    width: min(380px, calc(100vw - 32px));
+    background: var(--card); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 6px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.22);
+    padding: 26px 24px 22px;
+  }
+  .ask-fab[hidden], .ask-panel[hidden] { display: none; }
+  .ask-panel h2 {
+    font-family: 'Amiri', Georgia, serif; font-size: 24px; font-weight: 400;
+    line-height: 1.2; margin-bottom: 10px; padding-right: 28px;
+  }
+  .ask-panel p {
+    font-family: 'Amiri', Georgia, serif; font-size: 15.5px; line-height: 1.55;
+    color: var(--ink-soft); margin-bottom: 16px;
+  }
+  .ask-close {
+    position: absolute; top: 14px; right: 14px; width: 30px; height: 30px;
+    border: 1px solid var(--rule); border-radius: 50%; background: transparent;
+    color: var(--ink-soft); cursor: pointer; font-size: 16px; line-height: 1;
+  }
+  .ask-close:hover { border-color: var(--accent); color: var(--accent); }
+  .ask-fee {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 12px 0; margin-bottom: 16px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    font-size: 13px; color: var(--ink-faded);
+  }
+  .ask-fee strong {
+    font-family: 'Amiri', Georgia, serif; font-size: 20px; font-weight: 400; color: var(--accent);
+  }
+  .ask-book {
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    width: 100%; padding: 13px 16px; border-radius: 4px;
+    background: var(--accent); color: var(--paper); text-decoration: none;
+    font-size: 14px; font-weight: 500; transition: opacity 0.15s;
+  }
+  .ask-book:hover { opacity: 0.9; }
+  .ask-note { font-size: 12px; color: var(--ink-faded); text-align: center; margin-top: 8px; }
+  .ask-media {
+    margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule);
+    font-size: 13px; color: var(--ink-faded);
+  }
+  .ask-media a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .ask-media a:hover { text-decoration: underline; }
+  @media (max-width: 820px) {
+    .ask-fab { right: 16px; bottom: 16px; padding: 11px 16px; }
+    .ask-panel { right: 16px; bottom: 72px; }
+  }
+  @media print { .ask-fab, .ask-panel { display: none !important; } }
 </style>
 </head>
 <body>
@@ -1360,6 +1429,23 @@
   </div>
 </footer>
 
+<!-- Ask me about Yemen -->
+<button class="ask-fab" id="ask-fab" aria-expanded="false" aria-controls="ask-panel" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  Ask me about Yemen
+</button>
+<div class="ask-panel" id="ask-panel" role="dialog" aria-labelledby="ask-title" hidden>
+  <button class="ask-close" id="ask-close" aria-label="Close">×</button>
+  <h2 id="ask-title">Ask me about Yemen</h2>
+  <p>One-on-one consultations on Yemen and the wider MENA region: the conflict and the Houthi movement, the humanitarian situation, and the politics and policy shaping both. Suited to NGOs, policy teams, businesses, and researchers who need a clear, evidence-based briefing.</p>
+  <div class="ask-fee"><span>Consultation fee</span><strong>US$100 / hour</strong></div>
+  <a class="ask-book" id="ask-book" href="BOOKING_URL" target="_blank" rel="noopener">Book a time &amp; pay with PayPal →</a>
+  <div class="ask-note">Choose a time, then pay securely with PayPal at booking.</div>
+  <div class="ask-media">Journalist or media request? <a href="mailto:halsale3@uwo.ca?subject=Media%20request%3A%20Yemen">Email me directly</a>, no fee.</div>
+</div>
+
 <script>
   // Theme toggle
   const root = document.documentElement;
@@ -1442,6 +1528,27 @@
       .then(topo => { land = topojson.feature(topo, topo.objects.countries); draw(); })
       .catch(() => {});
     let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 150); });
+  })();
+
+  // Ask me about Yemen panel
+  (function () {
+    const fab = document.getElementById('ask-fab');
+    const panel = document.getElementById('ask-panel');
+    const close = document.getElementById('ask-close');
+    // Stays hidden until a real booking link replaces BOOKING_URL
+    if (!document.getElementById('ask-book').getAttribute('href').startsWith('https://')) return;
+    fab.hidden = false;
+    function setOpen(open) {
+      panel.hidden = !open;
+      fab.setAttribute('aria-expanded', String(open));
+      if (open) close.focus(); else fab.focus();
+    }
+    fab.addEventListener('click', () => setOpen(panel.hidden));
+    close.addEventListener('click', () => setOpen(false));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) setOpen(false); });
+    document.addEventListener('click', e => {
+      if (!panel.hidden && !panel.contains(e.target) && !fab.contains(e.target)) setOpen(false);
+    });
   })();
 </script>
 
