@@ -802,3 +802,4 @@ html[dir="rtl"] [lang="en"] { font-style: normal; }
 @media (max-width: 820px) {
   html[dir="rtl"] .ask-fab, html[dir="rtl"] .ask-panel { left: 16px; }
 }
+html[dir="rtl"] bdi[lang="en"] { white-space: nowrap; }
