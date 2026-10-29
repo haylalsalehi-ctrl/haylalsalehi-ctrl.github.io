@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-29",
+  "generated_at": "2026-10-29T19:30:00Z",
+  "status": "sample",
+  "slides": [
+    {
+      "id": "security-1",
+      "category": "security",
+      "en": {
+        "category_label": "Security",
+        "title": "Sample slide: frontline update from Marib",
+        "summary": "This is sample text showing how a security slide will look. A real brief would say what happened on the Marib frontlines, who was involved, and why it matters for the wider conflict.",
+        "attribution": "Sample attribution: according to two independent outlets"
+      },
+      "ar": {
+        "category_label": "الأمن",
+        "title": "شريحة تجريبية: مستجدات جبهات مأرب",
+        "summary": "هذا نص تجريبي يوضح شكل شريحة الأمن. وفي الموجز الفعلي ستبيّن الشريحة ما جرى على جبهات مأرب، والأطراف المعنية، وأهمية ذلك في مسار النزاع.",
+        "attribution": "إسناد تجريبي: بحسب مصدرين مستقلين"
+      },
+      "location": { "name_en": "Marib", "name_ar": "مأرب", "lat": 15.46, "lon": 45.32 },
+      "sources": [
+        { "name": "ReliefWeb (sample link)", "url": "https://reliefweb.int/country/yem", "published": "2026-10-29" },
+        { "name": "ACLED (sample link)", "url": "https://acleddata.com/", "published": "2026-10-29" }
+      ]
+    },
+    {
+      "id": "maritime-1",
+      "category": "maritime",
+      "en": {
+        "category_label": "Red Sea & maritime",
+        "title": "Sample slide: shipping notice near Bab al-Mandab",
+        "summary": "This is sample text for a maritime slide. A real brief would summarize advisories or incidents in the strait and explain what they mean for shipping and for Yemen's ports.",
+        "attribution": "Sample attribution: according to UKMTO"
+      },
+      "ar": {
+        "category_label": "البحر الأحمر والملاحة",
+        "title": "شريحة تجريبية: تنبيه ملاحي قرب باب المندب",
+        "summary": "هذا نص تجريبي لشريحة الملاحة البحرية. وفي الموجز الفعلي ستلخّص الشريحة التنبيهات أو الحوادث في المضيق، وتوضّح أثرها في حركة الشحن والموانئ اليمنية.",
+        "attribution": "إسناد تجريبي: بحسب هيئة عمليات التجارة البحرية البريطانية"
+      },
+      "location": { "name_en": "Bab al-Mandab", "name_ar": "باب المندب", "lat": 12.6, "lon": 43.33 },
+      "sources": [
+        { "name": "UKMTO (sample link)", "url": "https://www.ukmto.org/", "published": "2026-10-29" }
+      ]
+    },
+    {
+      "id": "regional-1",
+      "category": "regional",
+      "en": {
+        "category_label": "Regional",
+        "title": "Sample slide: regional diplomacy in Riyadh",
+        "summary": "This is sample text for a regional slide. A real brief would describe a step by a neighbouring state or outside power that affects Yemen, such as talks hosted in Riyadh.",
+        "attribution": "Sample attribution: according to a wire report"
+      },
+      "ar": {
+        "category_label": "الشأن الإقليمي",
+        "title": "شريحة تجريبية: تحركات دبلوماسية في الرياض",
+        "summary": "هذا نص تجريبي لشريحة الشأن الإقليمي. وفي الموجز الفعلي ستتناول الشريحة خطوة تتخذها دولة مجاورة أو قوة خارجية وتؤثر في اليمن، كمحادثات تستضيفها الرياض.",
+        "attribution": "إسناد تجريبي: بحسب تقرير لوكالة أنباء"
+      },
+      "location": { "name_en": "Riyadh", "name_ar": "الرياض", "lat": 24.71, "lon": 46.68 },
+      "sources": [
+        { "name": "Asharq Al-Awsat (sample link)", "url": "https://english.aawsat.com/", "published": "2026-10-29" }
+      ]
+    },
+    {
+      "id": "economy-1",
+      "category": "economy",
+      "en": {
+        "category_label": "Economy",
+        "title": "Sample slide: currency and prices, with no map location",
+        "summary": "This is sample text for a nationwide story, so this slide has no location and the map shows no marker. A real brief would report exchange rates, salaries, or fuel prices with their sources.",
+        "attribution": "Sample attribution: according to the Sana'a Center"
+      },
+      "ar": {
+        "category_label": "الاقتصاد",
+        "title": "شريحة تجريبية: العملة والأسعار دون موقع على الخريطة",
+        "summary": "هذا نص تجريبي لخبر يشمل البلاد كلها، ولذلك لا تحمل الشريحة موقعًا ولا تظهر علامة على الخريطة. وفي الموجز الفعلي ستعرض الشريحة أسعار الصرف أو الرواتب أو أسعار الوقود مع مصادرها.",
+        "attribution": "إسناد تجريبي: بحسب مركز صنعاء للدراسات الاستراتيجية"
+      },
+      "sources": [
+        { "name": "Sana'a Center (sample link)", "url": "https://sanaacenter.org/", "published": "2026-10-29" }
+      ]
+    }
+  ]
+}

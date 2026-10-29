@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://haylalsalehi.com/brief/schema.json",
+  "title": "Yemen Daily Brief (one day)",
+  "description": "One day's brief for haylalsalehi.com. Rules that JSON Schema cannot express (coordinate box per category, source recency, no em dashes) are checked by tools/validate_brief.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["date", "generated_at", "status", "slides"],
+  "properties": {
+    "date": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "Brief date in Yemen time (Asia/Aden)." },
+    "generated_at": { "type": "string", "format": "date-time", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2}(\\.\\d+)?)?Z$", "description": "UTC timestamp. Drives the site's freshness rules." },
+    "status": { "enum": ["sample", "reviewed"], "description": "\"sample\" shows a Sample badge on the site." },
+    "slides": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
+      "items": { "$ref": "#/$defs/slide" }
+    }
+  },
+  "$defs": {
+    "category": { "enum": ["security", "politics", "humanitarian", "economy", "maritime", "regional", "watch"] },
+    "text": { "type": "string", "minLength": 1 },
+    "lang_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["category_label", "title", "summary", "attribution"],
+      "properties": {
+        "category_label": { "$ref": "#/$defs/text" },
+        "title": { "$ref": "#/$defs/text" },
+        "summary": { "$ref": "#/$defs/text" },
+        "attribution": { "$ref": "#/$defs/text" }
+      }
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name_en", "name_ar", "lat", "lon"],
+      "description": "Governorate or city centre, or a named sea area. Never a street, village or exact strike point.",
+      "properties": {
+        "name_en": { "$ref": "#/$defs/text" },
+        "name_ar": { "$ref": "#/$defs/text" },
+        "lat": { "type": "number", "minimum": 12, "maximum": 41 },
+        "lon": { "type": "number", "minimum": -17, "maximum": 62 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "url", "published"],
+      "properties": {
+        "name": { "$ref": "#/$defs/text" },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "published": { "type": "string", "format": "date", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "slide": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "en", "ar", "sources"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "category": { "$ref": "#/$defs/category" },
+        "en": {
+          "allOf": [{ "$ref": "#/$defs/lang_block" }],
+          "properties": { "title": { "maxLength": 90 } }
+        },
+        "ar": {
+          "allOf": [{ "$ref": "#/$defs/lang_block" }],
+          "properties": { "title": { "maxLength": 110 } }
+        },
+        "location": { "$ref": "#/$defs/location" },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source" }
+        }
+      },
+      "if": { "properties": { "category": { "not": { "const": "regional" } } } },
+      "then": {
+        "properties": {
+          "location": {
+            "properties": {
+              "lat": { "minimum": 12, "maximum": 20 },
+              "lon": { "minimum": 38, "maximum": 55 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

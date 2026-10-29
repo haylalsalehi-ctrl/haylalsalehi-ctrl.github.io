@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) settings. Only used to keep repo-only files off the public site.
+exclude:
+  - brief/README.md
+  - brief/schema.json
+  - tools/
