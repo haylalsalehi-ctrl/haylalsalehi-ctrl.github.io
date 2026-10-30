@@ -95,7 +95,7 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     if (!land) return;
     const w = innerWidth, h = innerHeight;
     svg.attr('viewBox', '0 0 ' + w + ' ' + h).selectAll('*').remove();
-    const box = { type: 'Feature', geometry: { type: 'MultiPoint', coordinates: [[-17, 12], [70, 41]] } }; // east edge extended past 62°E so Yemen clears the hero portrait
+    const box = { type: 'Feature', geometry: { type: 'MultiPoint', coordinates: [[-17, 12], [62, 41]] } };
     proj = d3.geoMercator().fitExtent([[w * 0.04, h * 0.08], [w * 0.96, h * 0.95]], box);
     const path = d3.geoPath(proj);
     const defs = svg.append('defs');
