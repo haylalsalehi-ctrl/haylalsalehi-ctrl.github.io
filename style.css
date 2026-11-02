@@ -901,3 +901,23 @@ html[dir="rtl"] .brief-summary { line-height: 1.85; }
 @media (max-width: 820px) {
   #mena-map .bm-label { display: none; }
 }
+
+/* ── Footer disclaimer ── */
+.foot-note { flex-basis: 100%; font-size: 12px; line-height: 1.6; color: var(--ink-faded); max-width: 760px; }
+.ask-note a { color: inherit; text-decoration: underline; }
+
+/* ── Legal & Privacy page ── */
+.legal { max-width: 760px; padding-top: 64px; padding-bottom: 88px; }
+.legal h1 { font-family: 'Amiri', Georgia, serif; font-size: clamp(32px, 4vw, 44px); font-weight: 400; line-height: 1.15; margin-bottom: 12px; }
+.legal .updated { font-size: 13px; color: var(--ink-faded); margin-bottom: 28px; }
+.legal .toc { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 14px 0; margin-bottom: 8px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 13px; }
+.legal .toc a, .legal a { color: var(--accent); text-decoration: none; }
+.legal a:hover { text-decoration: underline; }
+.legal h2 { font-family: 'Amiri', Georgia, serif; font-size: 28px; font-weight: 400; margin: 48px 0 14px; scroll-margin-top: 80px; }
+.legal h3 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin: 26px 0 8px; }
+.legal p, .legal li { font-family: 'Amiri', Georgia, serif; font-size: 17px; line-height: 1.65; color: var(--ink-soft); }
+.legal p + p { margin-top: 12px; }
+.legal ul { padding-inline-start: 22px; display: grid; gap: 6px; margin-top: 8px; }
+.legal strong { color: var(--ink); font-weight: 700; }
+html[dir="rtl"] .legal h3 { font-size: 15px; text-transform: none; }
+html[dir="rtl"] .legal p, html[dir="rtl"] .legal li { line-height: 1.9; }

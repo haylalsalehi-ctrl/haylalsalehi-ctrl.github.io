@@ -118,7 +118,7 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     try { drawMark(false); } catch (e) {}
     svg.append('rect').attr('width', w).attr('height', h).attr('fill', 'url(#veil-g)');
   }
-  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
+  fetch('/assets/data/countries-110m.json')
     .then(r => r.json())
     .then(topo => { land = topojson.feature(topo, topo.objects.countries); draw(); })
     .catch(() => {});
@@ -130,6 +130,7 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
   const fab = document.getElementById('ask-fab');
   const panel = document.getElementById('ask-panel');
   const close = document.getElementById('ask-close');
+  if (!fab || !panel || !close) return;
   // Stays hidden until a real booking link replaces BOOKING_URL
   if (!document.getElementById('ask-book').getAttribute('href').startsWith('https://')) return;
   fab.hidden = false;
