@@ -1,4 +1,26 @@
+# Search engines and AI search tools that link back to this site are welcome.
 User-agent: *
 Allow: /
+
+# AI training crawlers: please do not use this site's content to train AI models.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: meta-externalagent
+User-agent: FacebookBot
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: Omgilibot
+User-agent: ImagesiftBot
+User-agent: AI2Bot
+User-agent: Timpibot
+User-agent: PanguBot
+User-agent: img2dataset
+Disallow: /
 
 Sitemap: https://haylalsalehi.com/sitemap.xml

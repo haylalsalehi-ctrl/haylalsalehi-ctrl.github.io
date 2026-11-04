@@ -1,3 +1,13 @@
+// Email links: the address is put together here so it is not plain text in the HTML
+(function () {
+  const addr = ['haylal-salehi', 'hotmail.com'].join('@');
+  document.querySelectorAll('[data-mail]').forEach(a => {
+    const subject = a.getAttribute('data-subject');
+    a.href = 'mailto:' + addr + (subject ? '?subject=' + subject : '');
+  });
+  document.querySelectorAll('[data-mail-text]').forEach(el => { el.textContent = addr; });
+})();
+
 // Theme toggle
 const root = document.documentElement;
 const stored = localStorage.getItem('theme');
