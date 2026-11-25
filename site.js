@@ -109,9 +109,13 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     proj = d3.geoMercator().fitExtent([[w * 0.04, h * 0.08], [w * 0.96, h * 0.95]], box);
     const path = d3.geoPath(proj);
     const defs = svg.append('defs');
-    const grad = defs.append('radialGradient').attr('id', 'veil-g').attr('cx', document.documentElement.dir === 'rtl' ? '62%' : '38%').attr('cy', '50%').attr('r', '65%');
-    grad.append('stop').attr('offset', '0%').style('stop-color', 'var(--paper)').attr('stop-opacity', 0.6);
-    grad.append('stop').attr('offset', '100%').style('stop-color', 'var(--paper)').attr('stop-opacity', 0);
+    // On narrow screens text spans the full width, so the veil is wider and stronger
+    const narrow = w <= 820;
+    const grad = defs.append('radialGradient').attr('id', 'veil-g')
+      .attr('cx', narrow ? '50%' : document.documentElement.dir === 'rtl' ? '62%' : '38%')
+      .attr('cy', '50%').attr('r', narrow ? '90%' : '65%');
+    grad.append('stop').attr('offset', '0%').style('stop-color', 'var(--paper)').attr('stop-opacity', narrow ? 0.7 : 0.6);
+    grad.append('stop').attr('offset', '100%').style('stop-color', 'var(--paper)').attr('stop-opacity', narrow ? 0.35 : 0);
     svg.append('rect').attr('class', 'sea').attr('width', w).attr('height', h);
     svg.append('path').attr('class', 'grat').attr('d', path(d3.geoGraticule().step([10, 10])()));
     svg.append('g').selectAll('path').data(land.features).join('path')
