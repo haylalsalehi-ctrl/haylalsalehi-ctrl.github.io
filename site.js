@@ -136,6 +136,28 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
 })();
 
 // Ask me about Yemen panel
+// Mobile menu: shows the section links below the top bar on narrow screens
+(function () {
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('nav-sections');
+  if (!btn || !menu) return;
+  const bar = btn.closest('.topbar');
+  function setOpen(open, returnFocus) {
+    bar.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    if (!open && returnFocus) btn.focus();
+  }
+  btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+  menu.addEventListener('click', e => { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') setOpen(false, true);
+  });
+  document.addEventListener('click', e => {
+    if (!bar.contains(e.target)) setOpen(false);
+  });
+  window.matchMedia('(min-width: 821px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
+})();
+
 (function () {
   const fab = document.getElementById('ask-fab');
   const panel = document.getElementById('ask-panel');
